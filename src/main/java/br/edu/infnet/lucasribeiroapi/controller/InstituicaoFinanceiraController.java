@@ -1,53 +1,56 @@
 package br.edu.infnet.lucasribeiroapi.controller;
 
+import br.edu.infnet.lucasribeiroapi.exception.ResourceNotFoundException;
 import br.edu.infnet.lucasribeiroapi.model.domain.InstituicaoFinanceira;
-import br.edu.infnet.lucasribeiroapi.model.loader.InstituicaoFinanceiraLoader;
+import br.edu.infnet.lucasribeiroapi.model.repository.InstituicaoFinanceiraRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/instituicoes")
 public class InstituicaoFinanceiraController {
 
-    private List<InstituicaoFinanceira> instituicoes = new ArrayList<>();
-
-    public InstituicaoFinanceiraController() {
-        // Carrega os dados do arquivo XML para a memória
-        this.instituicoes = InstituicaoFinanceiraLoader.loadFromXml("src/main/resources/repository/InstituicaoFinanceira.xml");
-    }
+    @Autowired
+    private InstituicaoFinanceiraRepository instituicaoFinanceiraRepository;
 
     @GetMapping
-    public List<InstituicaoFinanceira> listar() {
-        return instituicoes;
+    public ResponseEntity<List<InstituicaoFinanceira>> listar() {
+        return ResponseEntity.ok(instituicaoFinanceiraRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public InstituicaoFinanceira obterPorId(@PathVariable Integer id) {
-        return instituicoes.stream().filter(i -> i.getId().equals(id)).findFirst().orElse(null);
+    public ResponseEntity<InstituicaoFinanceira> obterPorId(@PathVariable Integer id) {
+        InstituicaoFinanceira instituicao = instituicaoFinanceiraRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("InstituicaoFinanceira not found with id " + id));
+        return ResponseEntity.ok(instituicao);
     }
 
     @PostMapping
-    public InstituicaoFinanceira criar(@RequestBody InstituicaoFinanceira instituicao) {
-        instituicoes.add(instituicao);
-        return instituicao;
+    public ResponseEntity<InstituicaoFinanceira> criar(@RequestBody InstituicaoFinanceira instituicao) {
+        InstituicaoFinanceira novaInstituicao = instituicaoFinanceiraRepository.save(instituicao);
+        return new ResponseEntity<>(novaInstituicao, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public InstituicaoFinanceira atualizar(@PathVariable Integer id, @RequestBody InstituicaoFinanceira instituicaoAtualizada) {
-        InstituicaoFinanceira instituicao = instituicoes.stream().filter(i -> i.getId().equals(id)).findFirst().orElse(null);
-        if (instituicao != null) {
-            instituicao.setNome(instituicaoAtualizada.getNome());
-            instituicao.setCnpj(instituicaoAtualizada.getCnpj());
-            instituicao.setCodigoBanco(instituicaoAtualizada.getCodigoBanco());
-            instituicao.setAtivo(instituicaoAtualizada.getAtivo());
-        }
-        return instituicao;
+    public ResponseEntity<InstituicaoFinanceira> atualizar(@PathVariable Integer id, @RequestBody InstituicaoFinanceira instituicaoAtualizada) {
+        InstituicaoFinanceira instituicao = instituicaoFinanceiraRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("InstituicaoFinanceira not found with id " + id));
+        instituicao.setNome(instituicaoAtualizada.getNome());
+        instituicao.setCnpj(instituicaoAtualizada.getCnpj());
+        instituicao.setCodigoBanco(instituicaoAtualizada.getCodigoBanco());
+        instituicao.setAtivo(instituicaoAtualizada.getAtivo());
+        return ResponseEntity.ok(instituicaoFinanceiraRepository.save(instituicao));
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Integer id) {
-        instituicoes.removeIf(i -> i.getId().equals(id));
+    public ResponseEntity<Void> deletar(@PathVariable Integer id) {
+        InstituicaoFinanceira instituicao = instituicaoFinanceiraRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("InstituicaoFinanceira not found with id " + id));
+        instituicaoFinanceiraRepository.delete(instituicao);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -1,32 +1,26 @@
 <Contas>
     <Conta>
-        <id>1</id>
         <numero>12345-6</numero>
         <tipo>Corrente</tipo>
         <ativo>true</ativo>
+        <idDepartamento>1</idDepartamento>
+        <dataCriacao>2023-01-01T10:00:00</dataCriacao>
+        <dataAtualizacao>2023-01-10T15:00:00</dataAtualizacao>
     </Conta>
     <Conta>
-        <id>2</id>
         <numero>65432-1</numero>
         <tipo>Poupanca</tipo>
         <ativo>true</ativo>
+        <idDepartamento>2</idDepartamento>
+        <dataCriacao>2023-02-01T11:00:00</dataCriacao>
+        <dataAtualizacao>2023-02-15T16:00:00</dataAtualizacao>
     </Conta>
     <Conta>
-        <id>3</id>
         <numero>78901-2</numero>
         <tipo>Corrente</tipo>
         <ativo>false</ativo>
-    </Conta>
-    <Conta>
-        <id>4</id>
-        <numero>45678-9</numero>
-        <tipo>Poupanca</tipo>
-        <ativo>true</ativo>
-    </Conta>
-    <Conta>
-        <id>5</id>
-        <numero>98765-4</numero>
-        <tipo>Corrente</tipo>
-        <ativo>false</ativo>
+        <idDepartamento>3</idDepartamento>
+        <dataCriacao>2023-03-01T12:00:00</dataCriacao>
+        <dataAtualizacao>2023-03-20T17:00:00</dataAtualizacao>
     </Conta>
 </Contas>

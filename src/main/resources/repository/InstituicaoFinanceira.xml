@@ -1,37 +1,29 @@
 <InstituicoesFinanceiras>
     <InstituicaoFinanceira>
-        <id>1</id>
         <nome>Banco do Brasil</nome>
         <cnpj>00.000.000/0001-91</cnpj>
-        <codigoBanco>1</codigoBanco>
+        <codigoTipo>1</codigoTipo>
         <ativo>true</ativo>
+        <codigoBanco>1</codigoBanco>
+        <dataCriacao>2023-01-01T08:00:00</dataCriacao>
+        <dataAtualizacao>2023-01-10T13:00:00</dataAtualizacao>
     </InstituicaoFinanceira>
     <InstituicaoFinanceira>
-        <id>2</id>
         <nome>Caixa Econômica</nome>
         <cnpj>00.000.000/0002-91</cnpj>
-        <codigoBanco>104</codigoBanco>
+        <codigoTipo>2</codigoTipo>
         <ativo>true</ativo>
+        <codigoBanco>104</codigoBanco>
+        <dataCriacao>2023-02-01T09:00:00</dataCriacao>
+        <dataAtualizacao>2023-02-15T14:00:00</dataAtualizacao>
     </InstituicaoFinanceira>
     <InstituicaoFinanceira>
-        <id>3</id>
         <nome>Bradesco</nome>
         <cnpj>00.000.000/0003-91</cnpj>
+        <codigoTipo>3</codigoTipo>
+        <ativo>true</ativo>
         <codigoBanco>237</codigoBanco>
-        <ativo>true</ativo>
-    </InstituicaoFinanceira>
-    <InstituicaoFinanceira>
-        <id>4</id>
-        <nome>Itaú</nome>
-        <cnpj>00.000.000/0004-91</cnpj>
-        <codigoBanco>341</codigoBanco>
-        <ativo>false</ativo>
-    </InstituicaoFinanceira>
-    <InstituicaoFinanceira>
-        <id>5</id>
-        <nome>Santander</nome>
-        <cnpj>00.000.000/0005-91</cnpj>
-        <codigoBanco>33</codigoBanco>
-        <ativo>true</ativo>
+        <dataCriacao>2023-03-01T10:00:00</dataCriacao>
+        <dataAtualizacao>2023-03-20T15:00:00</dataAtualizacao>
     </InstituicaoFinanceira>
 </InstituicoesFinanceiras>

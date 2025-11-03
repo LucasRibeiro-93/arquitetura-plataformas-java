@@ -1,52 +1,55 @@
 package br.edu.infnet.lucasribeiroapi.controller;
 
+import br.edu.infnet.lucasribeiroapi.exception.ResourceNotFoundException;
 import br.edu.infnet.lucasribeiroapi.model.domain.Conta;
-import br.edu.infnet.lucasribeiroapi.model.loader.ContaLoader;
+import br.edu.infnet.lucasribeiroapi.model.repository.ContaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/contas")
 public class ContaController {
 
-    private List<Conta> contas = new ArrayList<>();
-
-    public ContaController() {
-        // Carrega os dados do arquivo XML para a memória
-        this.contas = ContaLoader.loadFromXml("src/main/resources/repository/Conta.xml");
-    }
+    @Autowired
+    private ContaRepository contaRepository;
 
     @GetMapping
-    public List<Conta> listar() {
-        return contas;
+    public ResponseEntity<List<Conta>> listar() {
+        return ResponseEntity.ok(contaRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public Conta obterPorId(@PathVariable Integer id) {
-        return contas.stream().filter(c -> c.getId().equals(id)).findFirst().orElse(null);
+    public ResponseEntity<Conta> obterPorId(@PathVariable Integer id) {
+        Conta conta = contaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Conta not found with id " + id));
+        return ResponseEntity.ok(conta);
     }
 
     @PostMapping
-    public Conta criar(@RequestBody Conta conta) {
-        contas.add(conta);
-        return conta;
+    public ResponseEntity<Conta> criar(@RequestBody Conta conta) {
+        Conta novaConta = contaRepository.save(conta);
+        return new ResponseEntity<>(novaConta, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public Conta atualizar(@PathVariable Integer id, @RequestBody Conta contaAtualizada) {
-        Conta conta = contas.stream().filter(c -> c.getId().equals(id)).findFirst().orElse(null);
-        if (conta != null) {
-            conta.setNumero(contaAtualizada.getNumero());
-            conta.setTipo(contaAtualizada.getTipo());
-            conta.setAtivo(contaAtualizada.getAtivo());
-        }
-        return conta;
+    public ResponseEntity<Conta> atualizar(@PathVariable Integer id, @RequestBody Conta contaAtualizada) {
+        Conta conta = contaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Conta not found with id " + id));
+        conta.setNumero(contaAtualizada.getNumero());
+        conta.setTipo(contaAtualizada.getTipo());
+        conta.setAtivo(contaAtualizada.getAtivo());
+        return ResponseEntity.ok(contaRepository.save(conta));
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Integer id) {
-        contas.removeIf(c -> c.getId().equals(id));
+    public ResponseEntity<Void> deletar(@PathVariable Integer id) {
+        Conta conta = contaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Conta not found with id " + id));
+        contaRepository.delete(conta);
+        return ResponseEntity.noContent().build();
     }
 }

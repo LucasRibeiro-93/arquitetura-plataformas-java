@@ -25,7 +25,6 @@ public class DepartamentoLoader {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
                     Departamento departamento = new Departamento();
-                    departamento.setId(Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent()));
                     departamento.setNome(element.getElementsByTagName("nome").item(0).getTextContent());
                     departamento.setDescricao(element.getElementsByTagName("descricao").item(0).getTextContent());
                     departamento.setAtivo(Boolean.parseBoolean(element.getElementsByTagName("ativo").item(0).getTextContent()));

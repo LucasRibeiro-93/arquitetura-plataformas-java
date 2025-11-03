@@ -1,32 +1,35 @@
 <Departamentos>
     <Departamento>
-        <id>1</id>
-        <nome>Financeiro</nome>
-        <descricao>Responsável pelas finanças</descricao>
+        <nome>Tesouraria</nome>
+        <descricao>Responsável pela gestão de caixa e liquidez</descricao>
         <ativo>true</ativo>
+        <idInstituicaoFinanceira>1</idInstituicaoFinanceira>
+        <dataCriacao>2023-01-01T09:00:00</dataCriacao>
+        <dataAtualizacao>2023-01-05T14:00:00</dataAtualizacao>
     </Departamento>
     <Departamento>
-        <id>2</id>
-        <nome>RH</nome>
-        <descricao>Recursos Humanos</descricao>
+        <nome>Contabilidade</nome>
+        <descricao>Responsável pelos registros contábeis</descricao>
         <ativo>true</ativo>
+        <idInstituicaoFinanceira>2</idInstituicaoFinanceira>
+        <dataCriacao>2023-02-01T10:00:00</dataCriacao>
+        <dataAtualizacao>2023-02-10T15:00:00</dataAtualizacao>
     </Departamento>
     <Departamento>
-        <id>3</id>
-        <nome>TI</nome>
-        <descricao>Tecnologia da Informação</descricao>
+        <nome>Gestão de Riscos</nome>
+        <descricao>Responsável pela identificação e mitigação de riscos</descricao>
         <ativo>true</ativo>
+        <idInstituicaoFinanceira>3</idInstituicaoFinanceira>
+        <dataCriacao>2023-03-01T11:00:00</dataCriacao>
+        <dataAtualizacao>2023-03-15T16:00:00</dataAtualizacao>
     </Departamento>
     <Departamento>
         <id>4</id>
-        <nome>Marketing</nome>
-        <descricao>Divulgação e publicidade</descricao>
-        <ativo>false</ativo>
-    </Departamento>
-    <Departamento>
-        <id>5</id>
-        <nome>Jurídico</nome>
-        <descricao>Assuntos legais</descricao>
+        <nome>Controladoria</nome>
+        <descricao>Responsável pelo controle e planejamento financeiro</descricao>
         <ativo>true</ativo>
+        <idInstituicaoFinanceira>1</idInstituicaoFinanceira>
+        <dataCriacao>2023-04-01T12:00:00</dataCriacao>
+        <dataAtualizacao>2023-04-10T17:00:00</dataAtualizacao>
     </Departamento>
 </Departamentos>

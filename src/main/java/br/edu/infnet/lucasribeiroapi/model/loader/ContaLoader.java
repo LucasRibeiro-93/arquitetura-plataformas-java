@@ -25,7 +25,6 @@ public class ContaLoader {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
                     Conta conta = new Conta();
-                    conta.setId(Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent()));
                     conta.setNumero(element.getElementsByTagName("numero").item(0).getTextContent());
                     conta.setTipo(element.getElementsByTagName("tipo").item(0).getTextContent());
                     conta.setAtivo(Boolean.parseBoolean(element.getElementsByTagName("ativo").item(0).getTextContent()));

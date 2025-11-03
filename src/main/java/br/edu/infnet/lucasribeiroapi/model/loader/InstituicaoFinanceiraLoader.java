@@ -25,7 +25,6 @@ public class InstituicaoFinanceiraLoader {
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
                     InstituicaoFinanceira instituicao = new InstituicaoFinanceira();
-                    instituicao.setId(Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent()));
                     instituicao.setNome(element.getElementsByTagName("nome").item(0).getTextContent());
                     instituicao.setCnpj(element.getElementsByTagName("cnpj").item(0).getTextContent());
                     instituicao.setCodigoBanco(Integer.parseInt(element.getElementsByTagName("codigoBanco").item(0).getTextContent()));
