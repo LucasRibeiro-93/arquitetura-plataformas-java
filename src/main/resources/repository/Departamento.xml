@@ -1,0 +1,32 @@
+<Departamentos>
+    <Departamento>
+        <id>1</id>
+        <nome>Financeiro</nome>
+        <descricao>Responsável pelas finanças</descricao>
+        <ativo>true</ativo>
+    </Departamento>
+    <Departamento>
+        <id>2</id>
+        <nome>RH</nome>
+        <descricao>Recursos Humanos</descricao>
+        <ativo>true</ativo>
+    </Departamento>
+    <Departamento>
+        <id>3</id>
+        <nome>TI</nome>
+        <descricao>Tecnologia da Informação</descricao>
+        <ativo>true</ativo>
+    </Departamento>
+    <Departamento>
+        <id>4</id>
+        <nome>Marketing</nome>
+        <descricao>Divulgação e publicidade</descricao>
+        <ativo>false</ativo>
+    </Departamento>
+    <Departamento>
+        <id>5</id>
+        <nome>Jurídico</nome>
+        <descricao>Assuntos legais</descricao>
+        <ativo>true</ativo>
+    </Departamento>
+</Departamentos>

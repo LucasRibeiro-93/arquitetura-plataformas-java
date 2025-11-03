@@ -1,0 +1,32 @@
+<Contas>
+    <Conta>
+        <id>1</id>
+        <numero>12345-6</numero>
+        <tipo>Corrente</tipo>
+        <ativo>true</ativo>
+    </Conta>
+    <Conta>
+        <id>2</id>
+        <numero>65432-1</numero>
+        <tipo>Poupanca</tipo>
+        <ativo>true</ativo>
+    </Conta>
+    <Conta>
+        <id>3</id>
+        <numero>78901-2</numero>
+        <tipo>Corrente</tipo>
+        <ativo>false</ativo>
+    </Conta>
+    <Conta>
+        <id>4</id>
+        <numero>45678-9</numero>
+        <tipo>Poupanca</tipo>
+        <ativo>true</ativo>
+    </Conta>
+    <Conta>
+        <id>5</id>
+        <numero>98765-4</numero>
+        <tipo>Corrente</tipo>
+        <ativo>false</ativo>
+    </Conta>
+</Contas>
